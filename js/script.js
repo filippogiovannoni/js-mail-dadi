@@ -3,6 +3,8 @@
 // prompt
 // if / else
 // array
+// document.querySelector
+// addEventListener
 
 
 //Chiedo la mail all'utente tramite un prompt e mi salvo il dato in una variabile
@@ -27,26 +29,57 @@ if (mail_list.includes(mail)) {
 // Gioco dei Dadi
 // Pseudocodice
 
-
 // Salvo in una variabile l'array con i valori dei dadi da 1 a 6
+const dice = ['1', '2', '3', '4', '5', '6']
 
 // Salvo in una variabile il numero random del dado per il giocatore
+const player_dice = Number(dice[Math.floor(Math.random() * dice.length)]);
 
 // Salvo in una variabile il numero random del dado per il computer
+const computer_dice = Number(dice[Math.floor(Math.random() * dice.length)]);
 
 // Salvo in una variabile il pulsante per lanciare il dado del giocatore
+const player_button = document.getElementById('player_button')
 
 // Salvo in una variabile il pulsante per lanciare il dado del computer
+const computer_button = document.getElementById('computer_button')
+
+// Salvo in una variabile il pulsante per vedere il vincitore
+const result = document.getElementById('result')
 
 //Quando viene cliccato sul pulsante del giocatore, viene lanciato il dado e viene stampato il valore in pagina
+player_button.addEventListener('click', function(){
+document.querySelector('.player_result').innerHTML = player_dice
+})
 
 //Quando viene cliccato sul pulsante del computer, viene lanciato il dado e viene stampato il valore in pagina
+computer_button.addEventListener('click', function(){
+    document.querySelector('.computer_result').innerHTML = computer_dice
+})
 
-    // Se il dado del giocatore è superiore a quello del computer
-        // Viene stampata in pagina la vittoria del giocatore
+// Se il dado del giocatore è superiore a quello del computer
+if (player_dice > computer_dice) {
+    
+    // Viene stampata in pagina la vittoria del giocatore al click del bottone
+    result.addEventListener('click', function(){
+        document.querySelector('.comment').innerHTML = 'Complimenti Giocatore, hai vinto!'
+        })
+}
+// Altrimenti se il dado del giocatore è inferiore a quello del computer
+else if (player_dice < computer_dice) {
 
-    // Altrimenti se il dado del giocatore è inferiore a quello del computer
-        // Viene stampata in pagina la vittoria del computer
+    // Viene stampata in pagina la vittoria del computer al click del bottone
+    result.addEventListener('click', function(){
+        document.querySelector('.comment').innerHTML = 'Complimenti Computer, hai vinto!'
+        })
+}
 
-    // Altrimenti il dado del giocatore e del computer sono uguali
-        // Viene stampato in pagina il pareggio
+// Altrimenti il dado del giocatore e del computer sono uguali
+else {
+    
+    // Viene stampato in pagina il pareggio al click del bottone
+    result.addEventListener('click', function(){
+        document.querySelector('.comment').innerHTML = 'Nessun vincitore.'
+        })
+
+}
