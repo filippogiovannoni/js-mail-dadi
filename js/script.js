@@ -29,14 +29,11 @@ if (mail_list.includes(mail)) {
 // Gioco dei Dadi
 // Pseudocodice
 
-// Salvo in una variabile l'array con i valori dei dadi da 1 a 6
-const dice = ['1', '2', '3', '4', '5', '6']
-
 // Salvo in una variabile il numero random del dado per il giocatore
-const player_dice = Number(dice[Math.floor(Math.random() * dice.length)]);
+const player_dice = Math.floor(Math.random() * 6) + 1;;
 
 // Salvo in una variabile il numero random del dado per il computer
-const computer_dice = Number(dice[Math.floor(Math.random() * dice.length)]);
+const computer_dice = Math.floor(Math.random() * 6) + 1;;
 
 // Salvo in una variabile il pulsante per lanciare il dado del giocatore
 const player_button = document.getElementById('player_button')
